@@ -2,22 +2,70 @@ import { Avatar } from "@mui/material";
 import React, { useState } from "react";
 import classnames from "classnames";
 import profilePhoto from "../Images/Profile1.jpg";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Navbar = () => {
   const [selectedItem, setSelectedItem] = useState(0);
+  const [viewNav, setViewNav] = useState(false);
   const navItems = ["Home", "About", "Projects", "Coding", "Skills", "Contact"];
+  const handleNav = () => {
+    setViewNav(!viewNav);
+  };
   return (
-    <div className="w-full flex px-20 py-8 justify-between items-center">
-      <div className="flex w-max items-center">
-        <Avatar alt="" src={profilePhoto} />
-        <p className="text-zinc-300 text-2xl font-bold ml-2">ABHISHEK</p>
-        <div className="w-[6px] h-[6px] bg-green-600 mt-[18px] ml-[4px] rounded-full"></div>
+    <div className="w-full">
+      <div className="w-full flex lg:px-20 md:px-8 px-12 lg:py-8 py-4 justify-between md:items-center items-start">
+        <div className="flex w-max items-center">
+          <Avatar alt="" src={profilePhoto} />
+          <p className="text-zinc-300 lg:text-2xl text-xl font-bold ml-2">
+            ABHISHEK
+          </p>
+          <div className="w-[6px] h-[6px] bg-green-600 mt-[18px] ml-[4px] rounded-full"></div>
+        </div>
+        <div
+          className={classnames(
+            "hidden w-[300px] lg:w-1/2 md:w-3/5 min-width-[300px] rounded-xl border border-slate-600 px-2 py-1 md:flex w-full justify-between items-center text-white bg-gray-900"
+          )}
+        >
+          {navItems.map((item, index) => (
+            <div
+              className={classnames(
+                "lg:text-md text-sm font-semibold hover:bg-blue-600 rounded-md py-2 px-3 cursor-pointer",
+                {
+                  "bg-blue-600": index === selectedItem,
+                }
+              )}
+              key={index}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+        <div
+          className="w-full flex flex-col items-end"
+          onClick={(e) => e.preventDefault()}
+        >
+          <div
+            className="border border-slate-600 px-2 pt-1 pb-2 text-white bg-gray-900 rounded-md w-max"
+            onClick={handleNav}
+          >
+            {viewNav ? <CloseIcon /> : <MenuIcon />}
+          </div>
+        </div>
       </div>
-      <div className="w-1/2 rounded-xl border border-slate-600 px-2 py-1 flex w-full justify-between items-center text-white bg-gray-900">
+      <div
+        className={classnames(
+          " w-[400px]  mr-12 min-width-[200px] rounded-xl border border-slate-600 px-2 py-1 w-full text-white bg-gray-900 flex flex-col float-right",
+          {
+            hidden: viewNav === false,
+            block: viewNav === true,
+          }
+        )}
+      >
         {navItems.map((item, index) => (
           <div
             className={classnames(
-              "text-md font-semibold hover:bg-blue-600 rounded-md py-2 px-3 cursor-pointer",
+              "lg:text-md text-sm font-semibold hover:bg-blue-600 rounded-md py-2 px-3 cursor-pointer",
               {
                 "bg-blue-600": index === selectedItem,
               }
