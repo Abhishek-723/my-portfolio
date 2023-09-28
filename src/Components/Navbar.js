@@ -13,8 +13,8 @@ const Navbar = () => {
     setViewNav(!viewNav);
   };
   return (
-    <div className="w-full">
-      <div className="w-full flex lg:px-20 md:px-8 px-12 lg:py-8 py-4 justify-between md:items-center items-start">
+    <div className="w-full relative">
+      <div className="w-full flex lg:px-20 px-8 lg:py-8 py-4 justify-between md:items-center items-start">
         <div className="flex w-max items-center">
           <Avatar alt="" src={profilePhoto} />
           <p className="text-zinc-300 lg:text-2xl text-xl font-bold ml-2">
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
         <div
           className={classnames(
-            "hidden w-[300px] lg:w-1/2 md:w-3/5 min-width-[300px] rounded-xl border border-slate-600 px-2 py-1 md:flex w-full justify-between items-center text-white bg-gray-900"
+            "hidden lg:w-[46%] md:w-3/5 min-width-[300px] rounded-xl border border-slate-600 px-2 py-1 md:flex justify-between items-center text-white bg-gray-900"
           )}
         >
           {navItems.map((item, index) => (
@@ -42,11 +42,11 @@ const Navbar = () => {
           ))}
         </div>
         <div
-          className="w-full flex flex-col items-end"
+          className="md:hidden w-full flex flex-col items-end"
           onClick={(e) => e.preventDefault()}
         >
           <div
-            className="border border-slate-600 px-2 pt-1 pb-2 text-white bg-gray-900 rounded-md w-max"
+            className="md:hidden border border-slate-600 px-2 pt-1 pb-2 text-white bg-gray-900 rounded-md w-max"
             onClick={handleNav}
           >
             {viewNav ? <CloseIcon /> : <MenuIcon />}
@@ -55,7 +55,7 @@ const Navbar = () => {
       </div>
       <div
         className={classnames(
-          " w-[400px]  mr-12 min-width-[200px] rounded-xl border border-slate-600 px-2 py-1 w-full text-white bg-gray-900 flex flex-col float-right",
+          " w-1/2 md:hidden absolute right-8 top-16 min-width-[200px] rounded-xl border border-slate-600 px-2 py-1 w-full text-white bg-gray-900 flex flex-col float-right",
           {
             hidden: viewNav === false,
             block: viewNav === true,
