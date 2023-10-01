@@ -55,7 +55,7 @@ const Navbar = () => {
       </div>
       <div
         className={classnames(
-          " w-1/2 md:hidden absolute right-8 top-16 min-width-[200px] rounded-xl border border-slate-600 px-2 py-1 w-full text-white bg-gray-900 flex flex-col float-right",
+          " w-1/2 md:hidden absolute right-8 top-16 min-w-[200px] rounded-xl border border-slate-600 px-2 py-1 text-white bg-gray-900 flex flex-col float-right",
           {
             hidden: viewNav === false,
             block: viewNav === true,
